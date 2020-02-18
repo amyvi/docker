@@ -4,9 +4,8 @@ Container
 	- An instance of that image running as a process
 Docker Hub
   - Image hub
-
-
---------------------------------------------------
+  
+----------------------------------------------------------------------------------------------------
 Network:
 
 Port format:
@@ -23,7 +22,7 @@ Host
 	- Gains performance by skipping virtual networks but sacrifices security by container model
 
 
---------------------------------------------------
+----------------------------------------------------------------------------------------------------
 Container Lifetime & Persistent Data
 - How to achieve persistent data in Docker?
 	- Two ways
@@ -37,4 +36,24 @@ Container Lifetime & Persistent Data
 	2. Bind Mounts
 	- link container path to host path, just like map files
 	-  -v $(pwd):/usr/share/nginx/html nginx
-	
+
+Exercise w/ Named Volumes:
+Database upgrades with containers.
+1. Create postgres with 9.6.1 version and named volume psql-data
+3. Create new postgres 9.6.2 with same named volume container.
+
+$ docker container run --name postgres -e POSTGRES_HOST_AUTH_METHOD=trust -d -v psql-data:/var/lib/post
+$ docker container logs postgres
+$ docker volume ls
+$ docker container run --name postgres2 -e POSTGRES_HOST_AUTH_METHOD=trust -d -v psql-data:/var/lib/p
+ostgresql/data -d postgres:9.6.2
+
+Exercise w/ Bind Mounts:
+
+
+
+----------------------------------------------------------------------------------------------------
+
+
+
+

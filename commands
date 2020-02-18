@@ -1,0 +1,25 @@
+Basic:
+$docker container run -d -p <port> --name <name> <image> // running a container, (-d) to run in BG
+$ docker system df // check space utilization
+$ docker image ls // list of all images
+
+Prune Commands (for cleanup)
+$ docker system prune // delete all unused containers // to delete all unusued images specify (-a)
+$ docker image prune // delete all dangling image
+$ docker container prune // delete all stopped containers
+
+Admin Commands:
+$docker container top // process list in one container
+$docker container inspect // details of one container config
+	$docker container inspect --format '{{ .NetworkSettings.IPAddress }}' <container> // specify the ip of the container
+$docker container stats // performance stats for all containers
+$docker container run -it // start new container interactively
+$docker container exec it // run additional command in existing container
+$docker container run --rm // (-rm) automatically removes container upon exit
+
+Network commands:
+$docker container port <container> // specify the port of the container
+$docket network create <network name> // create own virtual network
+$docket network connect <networkname> <container> // replace network of container
+$docket network inspect <network> // check details of network
+

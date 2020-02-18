@@ -8,8 +8,8 @@ $ docker-machine ip // list your vm ip address
 
 Prune Commands (for cleanup)
 $ docker system prune // delete all unused containers // to delete all unusued images specify (-a)
-$ docker image prune // delete all dangling image
-$ docker container prune // delete all stopped containers
+$ Other specific options: $ docker <volume><image><container> prune
+
 
 Admin Commands:
 $docker container top // process list in one container

@@ -4,6 +4,7 @@ Basic:
 $docker container run -d -p <port> --name <name> <image> // running a container, (-d) to run in BG
 $ docker system df // check space utilization
 $ docker image ls // list of all images
+$ docker-machine ip // list your vm ip address
 
 Prune Commands (for cleanup)
 $ docker system prune // delete all unused containers // to delete all unusued images specify (-a)

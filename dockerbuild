@@ -60,5 +60,6 @@ SECURITY WARNING: You are building a Docker image from Windows against a non-Win
 ---------------------------------------------------------
 To run the container:
 $ docker container run -d -p 80:3000 amyvi/node-web-app
+# add --rm to remove it once done
 
 

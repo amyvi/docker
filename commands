@@ -1,3 +1,5 @@
+// Docker command notes // 
+
 *** always use --help for more options
 *** $(pwd) - current working directory 
 -----------------------------------

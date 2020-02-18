@@ -35,5 +35,6 @@ Container Lifetime & Persistent Data
 	$docker volume create
 	 
 	2. Bind Mounts
-	- link container path to host path
+	- link container path to host path, binds source paths
+	-  -v $(pwd):/usr/share/nginx/html nginx
 	

@@ -67,3 +67,7 @@ $ docker tag <source_image> <target_image>
 
 To upload in docker hub:
 $ docker push <name>
+
+To delete from docker container:
+$ docker image rm <name>
+# you can use -f if not able

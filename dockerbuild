@@ -1,0 +1,62 @@
+Dockerfile:
+
+# Instructions from the app developer
+# - you should use the 'node' official image, with the alpine 6.x branch
+FROM node:6-alpine
+# - this app listens on port 3000, but the container should launch on port 80
+EXPOSE 3000 
+  #  so it will respond to http://localhost:80 on your computer
+# - then it should use alpine package manager to install tini: 'apk add --update tini'
+RUN apk add --update tini
+# - then it should create directory /usr/src/app for app files with 'mkdir -p /usr/src/app'
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+# - Node uses a "package manager", so it needs to copy in package.json file
+COPY package.json package.json
+# - then it needs to run 'npm install' to install dependencies from that file
+RUN npm install && npm cache clean
+# - to keep it clean and small, run 'npm cache clean --force' after above
+# - then it needs to copy in all files from current directory
+COPY . . 
+# - then it needs to start container with command '/sbin/tini -- node ./bin/www'
+CMD [ "tini", "--", "node", "./bin/www"]
+
+
+To build the dockerfile :
+
+$ docker build  -t amyvi/node-web-app .
+Sending build context to Docker daemon  443.9kB
+Step 1/9 : FROM node:6-alpine
+ ---> dfc29bfa7d41
+Step 2/9 : EXPOSE 3000
+ ---> Using cache
+ ---> 15925e411b5b
+Step 3/9 : RUN apk add --update tini
+ ---> Using cache
+ ---> 5d6f5a60e319
+Step 4/9 : RUN mkdir -p /usr/src/app
+ ---> Using cache
+ ---> 288ac2f0b359
+Step 5/9 : WORKDIR /usr/src/app
+ ---> Using cache
+ ---> 7b0b8250f65e
+Step 6/9 : COPY package.json package.json
+ ---> Using cache
+ ---> 9bc1e11f0036
+Step 7/9 : RUN npm install && npm cache clean
+ ---> Using cache
+ ---> 6bfa458e80b2
+Step 8/9 : COPY . .
+ ---> Using cache
+ ---> 27ec80ebd006
+Step 9/9 : CMD [ "tini", "--", "node", "./bin/www"]
+ ---> Using cache
+ ---> c1e1d17fed78
+Successfully built c1e1d17fed78
+Successfully tagged amyvi/node-web-app:latest
+SECURITY WARNING: You are building a Docker image from Windows against a non-Windows Docker host. All files and directories added to build context will have '-rwxr-xr-x' permissions. It is recommended to double check and reset permissions for sensitive files and directories.
+
+To run the container:
+$ docker container run -d -p 80:3000 amyvi/node-web-app
+
+

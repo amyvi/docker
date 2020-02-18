@@ -1,10 +1,15 @@
 *** always use --help for more options
 
 Basic:
-$docker container run -d -p <port> --name <name> <image> // running a container, (-d) to run in BG
+$docker container run -d -p <port> --name <name> -v <image> // running a container, (-d) to run in BG, (-v) to specify the volume include path
+Sample: 
+$ docker run -d --name mysql2 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/mysql mysql
+$ docker container run -d -p 80:3000 amyvi/node-web-app
+
 $docker system df // check space utilization
 $docker <image><container><volume> ls // list of all <>
 $docker-machine ip // list your vm ip address
+
 
 
 Prune Commands (for cleanup)
@@ -20,6 +25,7 @@ $docker container stats // performance stats for all containers
 $docker container run -it // start new container interactively
 $docker container exec it // run additional command in existing container
 $docker container run --rm // (-rm) automatically removes container upon exit
+$docker container stop
 
 Network commands:
 $docker container port <container> // specify the port of the container

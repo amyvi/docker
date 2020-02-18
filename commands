@@ -1,3 +1,5 @@
+*** always use --help for more options
+
 Basic:
 $docker container run -d -p <port> --name <name> <image> // running a container, (-d) to run in BG
 $ docker system df // check space utilization

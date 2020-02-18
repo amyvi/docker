@@ -1,0 +1,39 @@
+Image
+	- The application we want to run
+Container
+	- An instance of that image running as a process
+Docker Hub
+  - Image hub
+
+
+--------------------------------------------------
+Network:
+
+Port format:
+$-p host:container
+$1 container = 1 port on host is allowed
+
+Bridge - Docker 0 (network bridge)
+	- Default docker
+	- Virtual network
+	- Which is NAT'ed behind the host IP
+
+Host
+	- Network host
+	- Gains performance by skipping virtual networks but sacrifices security by container model
+
+
+--------------------------------------------------
+Container Lifetime & Persistent Data
+- How to achieve persistent data in Docker?
+	- Two ways
+	1. Volumes
+	 - make special location outside of container UFS
+	 - if you want to delete a volume (you need to do it manually)
+	- you can rename it upon creation (-v)
+	- or you can manually create it 
+	$docker volume create
+	 
+	2. Bind Mounts
+	- link container path to host path
+	

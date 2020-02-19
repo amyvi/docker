@@ -25,8 +25,8 @@ Image Commands:
 $ docker build -t amyvi/node-web-app . // build new image
 $ docker build -f <name of the new docker file> // specify other dockerfile name and not the default 
 $ docker tag <source_image> <target_image> // rename tag
-$ ocker push <name> // upload image in docker hub
-$ ocker image rm <name> // To delete from docker container:
+$ docker push <name> // upload image in docker hub
+$ docker image rm <name> // To delete from docker container:
 -----------------------------------
 Prune Commands (for cleanup)
 $ docker system prune // delete all unused containers // to delete all unusued images specify (-a)

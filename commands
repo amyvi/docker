@@ -4,7 +4,7 @@
 *** $(pwd) - current working directory 
 -----------------------------------
 Basic:
-$ docker container run -d -p <port> --name <name> -v <image> // running a container, (-d) to run in BG, (-v) to specify the volume include path
+$ docker container run -d -p <port> --name <name> -v <volumename:volumepath>  <image> // running a container, (-d) to run in BG, (-v) to specify the volume include path
 Sample: 
 $ docker run -d --name mysql2 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/mysql mysql
 $ docker container run -d --name nginx -p 80:80 -v $(pwd):/usr/share/nginx/html nginx // (-v) bind mount format

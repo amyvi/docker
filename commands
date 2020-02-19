@@ -4,14 +4,14 @@
 *** $(pwd) - current working directory 
 -----------------------------------
 Basic:
-$docker container run -d -p <port> --name <name> -v <image> // running a container, (-d) to run in BG, (-v) to specify the volume include path
+$ docker container run -d -p <port> --name <name> -v <image> // running a container, (-d) to run in BG, (-v) to specify the volume include path
 Sample: 
 $ docker run -d --name mysql2 -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/mysql mysql
 $ docker container run -d --name nginx -p 80:80 -v $(pwd):/usr/share/nginx/html nginx // (-v) bind mount format
 
-$docker system df // check space utilization
-$docker <image><container><volume> ls // list of all <>
-$docker-machine ip // list your vm ip address
+$ docker system df // check space utilization
+$ docker <image><container><volume> ls // list of all <>
+$ docker-machine ip // list your vm ip address
 $ docker container logs -f psql
 -----------------------------------
 Docker compose:
@@ -22,29 +22,29 @@ $ docker-compose top
 $ docker-compose down
 -----------------------------------
 Image Commands:
-$docker build -t amyvi/node-web-app . // build new image
-$docker build -f <name of the new docker file> // specify other dockerfile name and not the default 
-$docker tag <source_image> <target_image> // rename tag
-$docker push <name> // upload image in docker hub
-$docker image rm <name> // To delete from docker container:
+$ docker build -t amyvi/node-web-app . // build new image
+$ docker build -f <name of the new docker file> // specify other dockerfile name and not the default 
+$ docker tag <source_image> <target_image> // rename tag
+$ ocker push <name> // upload image in docker hub
+$ ocker image rm <name> // To delete from docker container:
 -----------------------------------
 Prune Commands (for cleanup)
 $ docker system prune // delete all unused containers // to delete all unusued images specify (-a)
 $ Other specific options: $ docker <volume><image><container> prune
 -----------------------------------
 Admin Commands:
-$docker container top // process list in one container
-$docker container inspect // details of one container config
+$ docker container top // process list in one container
+$ docker container inspect // details of one container config
 	$docker container inspect --format '{{ .NetworkSettings.IPAddress }}' <container> // specify the ip of the container
-$docker container stats // performance stats for all containers
-$docker container run -it // start new container interactively
-$docker container exec it // run additional command in existing container
-$docker container run --rm // (-rm) automatically removes container upon exit
-$docker container stop
+$ docker container stats // performance stats for all containers
+$ docker container run -it // start new container interactively
+$ docker container exec it // run additional command in existing container
+$ docker container run --rm // (-rm) automatically removes container upon exit
+$ docker container stop
 -----------------------------------
 Network commands:
-$docker container port <container> // specify the port of the container
-$docker network create <network name> // create own virtual network
-$docker network connect <networkname> <container> // replace network of container
-$docker network inspect <network> // check details of network
+$ docker container port <container> // specify the port of the container
+$ docker network create <network name> // create own virtual network
+$ docker network connect <networkname> <container> // replace network of container
+$ docker network inspect <network> // check details of network
 

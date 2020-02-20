@@ -3,6 +3,8 @@
 *** always use --help for more options
 *** $(pwd) - current working directory 
 *** docker-machine upgrade <name of vm> // upgrade existing docker-machine VM's
+*** docker-machine ssh <nameofvm>
+*** docker-machin env <nameofvm> // then copy the last line.
 -----------------------------------
 Basic:
 $ docker container run -d -p <port> --name <name> -v <volumename:volumepath>  <image> // running a container, (-d) to run in BG, (-v) to specify the volume include path

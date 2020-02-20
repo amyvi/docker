@@ -1,0 +1,16 @@
+To activate swarm:
+$ docker swarm init
+
+Error:
+Error response from daemon: could not choose an IP address to advertise since this system has multiple addresses on different interfaces (10.0.2.15 on eth0 and 192.168.99.102 on eth1) - specify one with --advertise-addr
+
+Solution:
+$ docker-machine ip default
+$ docker swarm init --advertise-addr <ipaddress>
+
+To check if swarm is active:
+$ docker info
+
+---------------------------------------------------
+Basic Commands:
+$ docker node ls

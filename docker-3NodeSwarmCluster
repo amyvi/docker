@@ -1,0 +1,57 @@
+There are many ways to create a 3 node swarm cluster. This example is to be run locally with docker-machine + virtual box.
+
+Requirements:
+  1. 8GB memory
+  2. Virtual Box
+  3. Docker
+  
+Procedure:
+1. Create 3 nodes via docker-machine
+ $ docker machine create node1
+ $ docker machine create node2
+ $ docker machine create node3
+
+2. Check if all are running
+$ docker-machine ls
+
+3. Install docker on each node
+Source script for installation: https://get.docker.com/
+To login to each node:
+   $ docker-machine ssh node1
+To install:
+  docker@node1:~$ curl -fsSL https://get.docker.com -o get-docker.sh
+  docker@node1:~$ sh get-docker.sh
+To check version:
+   docker@node1:~$ docker --version
+   Docker version 19.03.5, build 633a0ea838
+   
+4. Activate swarm for each node
+
+docker@node1:~$ docker swarm init
+Error response from daemon: could not choose an IP address to advertise since this system has multiple addresses on different interfaces (10.0.0.0 on eth0 and 192.0.0.0 on eth1) - specify one with --advertise-addr
+docker@node1:~$ docker-machine ip
+-bash: docker-machine: command not found
+docker@node1:~$ docker swarm init --advertise-addr 192.0.0.0
+Swarm initialized: current node (iwa8ekcx2djbh8rq3h04h0oyu) is now a manager.
+
+5. Join the other nodes using docker swarm join token
+Copy paste the join token from node 1 to node 2.
+docker@node1:~$ docker swarm join-token worker
+
+6. Check status of the node
+$ docker node ls
+*** take note that the node must be reachable
+
+7. Update the role of node 2 into manager
+
+docker@node1:~$ docker node update --role manager node2
+node2
+
+8. Join node 3 using the docker swarm join token manager
+
+
+
+
+
+  
+

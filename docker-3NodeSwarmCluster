@@ -51,11 +51,17 @@ node2
 
 Note:
 
+Below are commands for creating/adding services.
+
 To scale up a service to multiple containers:
 $ docker service update <service name> --replicas #
 
+$ docker service ls
+$ docker service ps <name>
 
-
+Note: Overlay network communicates throughout all nodes and acts as eveyrthing is on the same subnet
+docker@node1:~$ docker network create --driver overlay mydrupal
+docker@node1:~$ docker service create --name psql --network mydrupal -e POSTGRES_PASSWORD=mypasswd postgres
 
   
 

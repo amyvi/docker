@@ -7,9 +7,9 @@ Requirements:
   
 Procedure:
 1. Create 3 nodes via docker-machine
- $ docker machine create node1
- $ docker machine create node2
- $ docker machine create node3
+ $ docker-machine create node1
+ $ docker-machine create node2
+ $ docker-machine create node3
 
 2. Check if all are running
 $ docker-machine ls

@@ -1,0 +1,10 @@
+There are many ways to install kubernetes on windows/linux. This guide is through microk8s installation to linux - Rhel 7 VM
+
+1. Follow this guide for installation
+https://snapcraft.io/install/microk8s/rhelhttps://snapcraft.io/install/microk8s/rhel
+
+2. Confirm if working through kubectl version command
+
+# kubectl version
+Client Version: version.Info{Major:"1", Minor:"17", GitVersion:"v1.17.3", GitCommit:"06ad960bfd03b39c8310aaf92d1e7c12ce618213", GitTreeState:"clean", BuildDate:"2020-02-11T18:14:22Z", GoVersion:"go1.13.6", Compiler:"gc", Platform:"linux/amd64"}
+Server Version: version.Info{Major:"1", Minor:"17", GitVersion:"v1.17.3", GitCommit:"06ad960bfd03b39c8310aaf92d1e7c12ce618213", GitTreeState:"clean", BuildDate:"2020-02-11T18:07:13Z", GoVersion:"go1.13.6", Compiler:"gc", Platform:"linux/amd64"}

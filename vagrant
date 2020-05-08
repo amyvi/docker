@@ -1,3 +1,7 @@
+#install vagrant https://www.vagrantup.com/downloads.html
+# run vagrant on cmd - vagrant init (this will generate the Vagrantfile)
+# replace the vagrant file with this config
+
 Vagrant.configure("2") do |config|
  
   nodes = 2
@@ -11,10 +15,12 @@ Vagrant.configure("2") do |config|
 
  
 config.vm.provider :virtualbox do |v|
+	v.customize ["modifyvm", :id, "--memory", "1024"]
+    v.customize ["modifyvm", :id, "--cpus", "2"]
     unless File.exist?(disk)
         v.customize ['createhd', '--filename', disk, '--variant', 'Fixed', '--size', 20 * 1024]
         end
-      v.memory = "1024"
+
 	  v.customize ['storagectl', :id, '--name', 'SATA Controller', '--add', 'sata'] 
       v.customize ['storageattach', :id,  '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
      end

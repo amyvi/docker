@@ -6,22 +6,24 @@ Vagrant.configure("2") do |config|
  
   nodes = 2
   os = "centos/7"
-  disk = './secondDisk.vdi'
+  disk = './secondhdd.vdi'
 
-
+#increments the two nodes
   (1..nodes).each do |i|
     config.vm.define "Node-#{i}" do |vb|
       vb.vm.box = os
 
- 
+#vm configs
 config.vm.provider :virtualbox do |v|
-	v.customize ["modifyvm", :id, "--memory", "1024"]
+    v.customize ["modifyvm", :id, "--memory", "1024"]
     v.customize ["modifyvm", :id, "--cpus", "2"]
+    
+#second storagge
     unless File.exist?(disk)
         v.customize ['createhd', '--filename', disk, '--variant', 'Fixed', '--size', 20 * 1024]
         end
-
-	  v.customize ['storagectl', :id, '--name', 'SATA Controller', '--add', 'sata'] 
+#attaching storage to vm
+      v.customize ['storagectl', :id, '--name', 'SATA Controller', '--add', 'sata'] 
       v.customize ['storageattach', :id,  '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
      end
     end
